@@ -1,3 +1,4 @@
+%%writefile  MedicalNet/train.py
 '''
 Training code for MRBrainS18 datasets segmentation
 Written by Whalechen
@@ -21,7 +22,7 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
     # settings
     batches_per_epoch = len(data_loader)
     log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
-    loss_seg = nn.CrossEntropyLoss(ignore_index=-1)
+    loss_seg = nn.MSELoss()
 
     print("Current setting is:")
     print(sets)
@@ -58,13 +59,14 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
                 label_mask = ndimage.interpolation.zoom(label_mask, scale, order=0)
                 new_label_masks[label_id] = label_mask
 
-            new_label_masks = torch.tensor(new_label_masks).to(torch.int64)
+            new_label_masks = torch.tensor(new_label_masks).to(torch.float32)
             if not sets.no_cuda:
                 new_label_masks = new_label_masks.cuda()
 
             # calculating loss
             loss_value_seg = loss_seg(out_masks, new_label_masks)
             loss = loss_value_seg
+            print(type(loss))
             loss.backward()                
             optimizer.step()
 
@@ -148,4 +150,4 @@ if __name__ == '__main__':
     data_loader = DataLoader(training_dataset, batch_size=sets.batch_size, shuffle=True, num_workers=sets.num_workers, pin_memory=sets.pin_memory)
 
     # training
-    train(data_loader, model, optimizer, scheduler, total_epochs=sets.n_epochs, save_interval=sets.save_intervals, save_folder=sets.save_folder, sets=sets) 
+    train(data_loader, model, optimizer, scheduler, total_epochs=sets.n_epochs, save_interval=sets.save_intervals, save_folder=sets.save_folder, sets=sets)

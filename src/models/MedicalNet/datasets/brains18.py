@@ -1,3 +1,4 @@
+%%writefile  MedicalNet/datasets/brains18.py
 '''
 Dataset for training
 Written by Whalechen
@@ -11,6 +12,7 @@ import numpy as np
 from torch.utils.data import Dataset
 import nibabel
 from scipy import ndimage
+from skimage import io
 
 class BrainS18Dataset(Dataset):
 
@@ -62,9 +64,8 @@ class BrainS18Dataset(Dataset):
             # read image
             ith_info = self.img_list[idx].split(" ")
             img_name = os.path.join(self.root_dir, ith_info[0])
-            print(img_name)
             assert os.path.isfile(img_name)
-            img = nibabel.load(img_name)
+            img = io.imread(img_name)
             assert img is not None
 
             # data processing
@@ -189,9 +190,6 @@ class BrainS18Dataset(Dataset):
 
 
     def __testing_data_process__(self, data): 
-        # crop data according net input size
-        data = data.get_data()
-
         # resize data
         data = self.__resize_data__(data)
 

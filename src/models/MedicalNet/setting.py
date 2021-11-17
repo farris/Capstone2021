@@ -1,3 +1,4 @@
+%%writefile  MedicalNet/setting.py
 '''
 Configs for training & testing
 Written by Whalechen

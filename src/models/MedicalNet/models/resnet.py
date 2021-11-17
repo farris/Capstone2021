@@ -1,3 +1,4 @@
+%%writefile  MedicalNet/models/resnet.py
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -10,7 +11,6 @@ __all__ = [
     'resnet152', 'resnet200'
 ]
 
-
 def conv3x3x3(in_planes, out_planes, stride=1, dilation=1):
     # 3x3x3 convolution with padding
     return nn.Conv3d(
@@ -21,7 +21,6 @@ def conv3x3x3(in_planes, out_planes, stride=1, dilation=1):
         stride=stride,
         padding=dilation,
         bias=False)
-
 
 def downsample_basic_block(x, planes, stride, no_cuda=False):
     out = F.avg_pool3d(x, kernel_size=1, stride=stride)
@@ -36,7 +35,6 @@ def downsample_basic_block(x, planes, stride, no_cuda=False):
 
     return out
 
-
 class BasicBlock(nn.Module):
     expansion = 1
 
@@ -50,6 +48,7 @@ class BasicBlock(nn.Module):
         self.downsample = downsample
         self.stride = stride
         self.dilation = dilation
+        self.linear = torch.nn.Linear(planes, planes)
 
     def forward(self, x):
         residual = x
@@ -64,10 +63,9 @@ class BasicBlock(nn.Module):
             residual = self.downsample(x)
 
         out += residual
-        out = self.relu(out)
+        out = self.linear(out)
 
         return out
-
 
 class Bottleneck(nn.Module):
     expansion = 4
@@ -85,11 +83,12 @@ class Bottleneck(nn.Module):
         self.downsample = downsample
         self.stride = stride
         self.dilation = dilation
+        self.linear = torch.nn.Linear(1, 1)
 
     def forward(self, x):
         residual = x
 
-        out = self.conv1(x)
+        out = self.conv1(x.T)
         out = self.bn1(out)
         out = self.relu(out)
 
@@ -104,10 +103,9 @@ class Bottleneck(nn.Module):
             residual = self.downsample(x)
 
         out += residual
-        out = self.relu(out)
+        out = self.linear(out)
 
-        return out
-
+        return out.T
 
 class ResNet(nn.Module):
 
@@ -129,8 +127,7 @@ class ResNet(nn.Module):
             kernel_size=7,
             stride=(2, 2, 2),
             padding=(3, 3, 3),
-            bias=False)
-            
+            bias=False)       
         self.bn1 = nn.BatchNorm3d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool3d(kernel_size=(3, 3, 3), stride=2, padding=1)
@@ -141,7 +138,6 @@ class ResNet(nn.Module):
             block, 256, layers[2], shortcut_type, stride=1, dilation=2)
         self.layer4 = self._make_layer(
             block, 512, layers[3], shortcut_type, stride=1, dilation=4)
-
         self.conv_seg = nn.Sequential(
                                         nn.ConvTranspose3d(
                                         512 * block.expansion,
@@ -167,6 +163,7 @@ class ResNet(nn.Module):
                                         stride=(1, 1, 1),
                                         bias=False) 
                                         )
+        self.linear = nn.Linear(self.inplanes, 3)
 
         for m in self.modules():
             if isinstance(m, nn.Conv3d):
@@ -211,6 +208,7 @@ class ResNet(nn.Module):
         x = self.layer3(x)
         x = self.layer4(x)
         x = self.conv_seg(x)
+        x = self.linear(x)
 
         return x
 
@@ -220,13 +218,11 @@ def resnet10(**kwargs):
     model = ResNet(BasicBlock, [1, 1, 1, 1], **kwargs)
     return model
 
-
 def resnet18(**kwargs):
     """Constructs a ResNet-18 model.
     """
     model = ResNet(BasicBlock, [2, 2, 2, 2], **kwargs)
     return model
-
 
 def resnet34(**kwargs):
     """Constructs a ResNet-34 model.
@@ -234,13 +230,11 @@ def resnet34(**kwargs):
     model = ResNet(BasicBlock, [3, 4, 6, 3], **kwargs)
     return model
 
-
 def resnet50(**kwargs):
     """Constructs a ResNet-50 model.
     """
     model = ResNet(Bottleneck, [3, 4, 6, 3], **kwargs)
     return model
-
 
 def resnet101(**kwargs):
     """Constructs a ResNet-101 model.
@@ -248,13 +242,11 @@ def resnet101(**kwargs):
     model = ResNet(Bottleneck, [3, 4, 23, 3], **kwargs)
     return model
 
-
 def resnet152(**kwargs):
     """Constructs a ResNet-101 model.
     """
     model = ResNet(Bottleneck, [3, 8, 36, 3], **kwargs)
     return model
-
 
 def resnet200(**kwargs):
     """Constructs a ResNet-101 model.

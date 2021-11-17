@@ -118,15 +118,16 @@ if __name__ == '__main__':
     # getting model
     torch.manual_seed(sets.manual_seed)
     model, parameters = generate_model(sets) 
-    print (model)
+    #print (model)
+    #print('PARAMETERS', parameters)
     # optimizer
-    if sets.ci_test:
-        params = [{'params': parameters, 'lr': sets.learning_rate}]
-    else:
-        params = [
-                { 'params': parameters['base_parameters'], 'lr': sets.learning_rate }, 
-                { 'params': parameters['new_parameters'], 'lr': sets.learning_rate*100 }
-                ]
+    #if sets.ci_test:
+    params = [{'params': parameters, 'lr': sets.learning_rate}]
+    #else:
+    #    params = [
+    #            { 'params': parameters['base_parameters'], 'lr': sets.learning_rate }, 
+    #            { 'params': parameters['new_parameters'], 'lr': sets.learning_rate*100 }
+    #            ]
     optimizer = torch.optim.SGD(params, momentum=0.9, weight_decay=1e-3)   
     scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
     

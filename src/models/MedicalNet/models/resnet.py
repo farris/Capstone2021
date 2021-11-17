@@ -52,7 +52,6 @@ class BasicBlock(nn.Module):
 
     def forward(self, x):
         residual = x
-
         out = self.conv1(x)
         out = self.bn1(out)
         out = self.relu(out)
@@ -64,6 +63,8 @@ class BasicBlock(nn.Module):
 
         out += residual
         out = self.linear(out)
+
+        print('are we getting interference here?')
 
         return out
 
@@ -83,29 +84,24 @@ class Bottleneck(nn.Module):
         self.downsample = downsample
         self.stride = stride
         self.dilation = dilation
-        self.linear = torch.nn.Linear(1, 1)
+        self.linear = torch.nn.Linear(7*self.expansion**2, 112)
 
     def forward(self, x):
         residual = x
 
-        out = self.conv1(x.T)
+        out = self.conv1(x)
         out = self.bn1(out)
         out = self.relu(out)
-
         out = self.conv2(out)
         out = self.bn2(out)
         out = self.relu(out)
-
         out = self.conv3(out)
         out = self.bn3(out)
-
         if self.downsample is not None:
             residual = self.downsample(x)
-
         out += residual
         out = self.linear(out)
-
-        return out.T
+        return out
 
 class ResNet(nn.Module):
 

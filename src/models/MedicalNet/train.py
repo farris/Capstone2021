@@ -23,7 +23,6 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
     batches_per_epoch = len(data_loader)
     log.info('{} epochs in total, {} batches per epoch'.format(total_epochs, batches_per_epoch))
     loss_seg = nn.MSELoss()
-    print("hi nasser!")
 
     print("Current setting is:")
     print(sets)

@@ -1,7 +1,7 @@
+%%writefile  MedicalNet/model.py
 import torch
 from torch import nn
 from models import resnet
-
 
 def generate_model(opt):
     assert opt.model in [
@@ -72,6 +72,7 @@ def generate_model(opt):
         if len(opt.gpu_id) > 1:
             model = model.cuda() 
             model = nn.DataParallel(model, device_ids=opt.gpu_id)
+
             net_dict = model.state_dict() 
         else:
             import os
@@ -87,7 +88,6 @@ def generate_model(opt):
         print ('loading pretrained model {}'.format(opt.pretrain_path))
         pretrain = torch.load(opt.pretrain_path)
         pretrain_dict = {k: v for k, v in pretrain['state_dict'].items() if k in net_dict.keys()}
-         
         net_dict.update(pretrain_dict)
         model.load_state_dict(net_dict)
 
@@ -102,7 +102,6 @@ def generate_model(opt):
         base_parameters = list(filter(lambda p: id(p) not in new_parameters_id, model.parameters()))
         parameters = {'base_parameters': base_parameters, 
                       'new_parameters': new_parameters}
-
         return model, parameters
 
     return model, model.parameters()

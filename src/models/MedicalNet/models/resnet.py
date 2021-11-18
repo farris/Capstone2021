@@ -1,4 +1,3 @@
-%%writefile  MedicalNet/models/resnet.py
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -64,8 +63,6 @@ class BasicBlock(nn.Module):
         out += residual
         out = self.linear(out)
 
-        print('are we getting interference here?')
-
         return out
 
 class Bottleneck(nn.Module):
@@ -84,7 +81,6 @@ class Bottleneck(nn.Module):
         self.downsample = downsample
         self.stride = stride
         self.dilation = dilation
-        self.linear = torch.nn.Linear(7*self.expansion**2, 112)
 
     def forward(self, x):
         residual = x
@@ -92,15 +88,20 @@ class Bottleneck(nn.Module):
         out = self.conv1(x)
         out = self.bn1(out)
         out = self.relu(out)
+
         out = self.conv2(out)
         out = self.bn2(out)
         out = self.relu(out)
+
         out = self.conv3(out)
         out = self.bn3(out)
+
         if self.downsample is not None:
             residual = self.downsample(x)
+
         out += residual
-        out = self.linear(out)
+        out = self.relu(out)
+
         return out
 
 class ResNet(nn.Module):
@@ -159,8 +160,9 @@ class ResNet(nn.Module):
                                         stride=(1, 1, 1),
                                         bias=False) 
                                         )
-        self.linear = nn.Linear(self.inplanes, 3)
-
+        self.linear = nn.Linear(112, 1)
+        self.linear2 = nn.Linear(1* 3* 14* 112* 1,1)
+        
         for m in self.modules():
             if isinstance(m, nn.Conv3d):
                 m.weight = nn.init.kaiming_normal(m.weight, mode='fan_out')
@@ -204,7 +206,9 @@ class ResNet(nn.Module):
         x = self.layer3(x)
         x = self.layer4(x)
         x = self.conv_seg(x)
-        x = self.linear(x)
+        x = self.relu(self.linear(x))
+        x = x.view(-1,x.size()[0]*x.size()[1]*x.size()[2]*x.size()[3]*x.size()[4])
+        x = self.relu(self.linear2(x))
 
         return x
 

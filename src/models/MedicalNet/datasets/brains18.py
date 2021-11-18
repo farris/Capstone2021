@@ -1,4 +1,3 @@
-%%writefile  MedicalNet/datasets/brains18.py
 '''
 Dataset for training
 Written by Whalechen
@@ -48,7 +47,7 @@ class BrainS18Dataset(Dataset):
             img = io.imread(img_name)
             assert img is not None
             mask = np.load(label_name)
-            mask = mask.f.arr_0
+            mask = np.mean(mask.f.arr_0)
             assert mask is not None
             
             # data processing
@@ -56,9 +55,9 @@ class BrainS18Dataset(Dataset):
 
             # 2 tensor array
             img_array = self.__nii2tensorarray__(img_array)
-            mask_array = self.__nii2tensorarray__(mask_array)
+            #mask_array = self.__nii2tensorarray__(mask_array)
 
-            assert img_array.shape ==  mask_array.shape, "img shape:{} is not equal to mask shape:{}".format(img_array.shape, mask_array.shape)
+            #assert img_array.shape ==  mask_array.shape, "img shape:{} is not equal to mask shape:{}".format(img_array.shape, mask_array.shape)
             return img_array, mask_array
         
         elif self.phase == "test":
@@ -124,7 +123,7 @@ class BrainS18Dataset(Dataset):
 
         # resize data
         data = self.__resize_data__(data)
-        label = self.__resize_data__(label)
+        #label = self.__resize_data__(label)
 
         # normalization datas
         data = self.__itensity_normalize_one_volume__(data)

@@ -1,4 +1,3 @@
-%%writefile  MedicalNet/setting.py
 '''
 Configs for training & testing
 Written by Whalechen
@@ -46,7 +45,7 @@ def parse_opts():
         help='Interation for saving model')
     parser.add_argument(
         '--n_epochs',
-        default=1,
+        default=200,
         type=int,
         help='Number of total epochs to run')
     parser.add_argument(

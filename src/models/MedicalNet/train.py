@@ -1,4 +1,3 @@
-%%writefile  MedicalNet/train.py
 '''
 Training code for MRBrainS18 datasets segmentation
 Written by Whalechen
@@ -48,25 +47,14 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
 
             optimizer.zero_grad()
             out_masks = model(volumes)
-            # resize label
-            [n, _, d, h, w] = out_masks.shape
-            new_label_masks = np.zeros([n, d, h, w])
-            for label_id in range(n):
-                label_mask = label_masks[label_id]
-                [ori_c, ori_d, ori_h, ori_w] = label_mask.shape 
-                label_mask = np.reshape(label_mask, [ori_d, ori_h, ori_w])
-                scale = [d*1.0/ori_d, h*1.0/ori_h, w*1.0/ori_w]
-                label_mask = ndimage.interpolation.zoom(label_mask, scale, order=0)
-                new_label_masks[label_id] = label_mask
 
-            new_label_masks = torch.tensor(new_label_masks).to(torch.float32)
+            new_label_masks = label_masks.float()
             if not sets.no_cuda:
                 new_label_masks = new_label_masks.cuda()
-
+            
             # calculating loss
             loss_value_seg = loss_seg(out_masks, new_label_masks)
             loss = loss_value_seg
-            print(type(loss))
             loss.backward()                
             optimizer.step()
 
@@ -91,14 +79,14 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
                                 'state_dict': model.state_dict(),
                                 'optimizer': optimizer.state_dict()},
                                 model_save_path)
-                            
+                           
     print('Finished training')            
     if sets.ci_test:
         exit()
 
 
 if __name__ == '__main__':
-    # settting
+    # setting
     sets = parse_opts()   
     if sets.ci_test:
         sets.img_list = './toy_data/test_ci.txt' 
@@ -112,25 +100,26 @@ if __name__ == '__main__':
         sets.input_D = 14
         sets.input_H = 28
         sets.input_W = 28
-       
-     
     
     # getting model
     torch.manual_seed(sets.manual_seed)
     model, parameters = generate_model(sets) 
-    print (model)
+    print(model)
+    
     # optimizer
     if sets.ci_test:
         params = [{'params': parameters, 'lr': sets.learning_rate}]
     else:
         params = [
                 { 'params': parameters['base_parameters'], 'lr': sets.learning_rate }, 
-                { 'params': parameters['new_parameters'], 'lr': sets.learning_rate*100 }
+                { 'params': parameters['new_parameters'], 'lr': sets.learning_rate }
                 ]
+    
     optimizer = torch.optim.SGD(params, momentum=0.9, weight_decay=1e-3)   
     scheduler = optim.lr_scheduler.ExponentialLR(optimizer, gamma=0.99)
     
     # train from resume
+    
     if sets.resume_path:
         if os.path.isfile(sets.resume_path):
             print("=> loading checkpoint '{}'".format(sets.resume_path))

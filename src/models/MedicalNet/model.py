@@ -1,4 +1,3 @@
-%%writefile  MedicalNet/model.py
 import torch
 from torch import nn
 from models import resnet

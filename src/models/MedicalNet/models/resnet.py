@@ -58,8 +58,7 @@ class BasicBlock(nn.Module):
         out = self.bn2(out)
 
         if self.downsample is not None:
-            residual = self.downsample(x)
-
+            residual l
         out += residual
         out = self.linear(out)
 
@@ -103,6 +102,7 @@ class Bottleneck(nn.Module):
         out = self.relu(out)
 
         return out
+
 
 class ResNet(nn.Module):
 

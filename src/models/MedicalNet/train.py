@@ -55,7 +55,6 @@ def train(data_loader, model, optimizer, scheduler, total_epochs, save_interval,
             # calculating loss
             loss_value_seg = loss_seg(out_masks, new_label_masks)
             loss = loss_value_seg
-            print(type(loss))
             loss.backward()                
             optimizer.step()
 
@@ -101,8 +100,6 @@ if __name__ == '__main__':
         sets.input_D = 14
         sets.input_H = 28
         sets.input_W = 28
-       
-     
     
     # getting model
     torch.manual_seed(sets.manual_seed)
@@ -115,7 +112,7 @@ if __name__ == '__main__':
     else:
         params = [
                 { 'params': parameters['base_parameters'], 'lr': sets.learning_rate }, 
-                { 'params': parameters['new_parameters'], 'lr': sets.learning_rate*100 }
+                { 'params': parameters['new_parameters'], 'lr': sets.learning_rate }
                 ]
     
     optimizer = torch.optim.SGD(params, momentum=0.9, weight_decay=1e-3)   

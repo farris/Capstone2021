@@ -25,7 +25,7 @@ def parse_opts():
     )
     parser.add_argument(
         '--learning_rate',  # set to 0.001 when finetune
-        default=0.001,
+        default=0.00001,
         type=float,
         help=
         'Initial learning rate (divided by 10 while training by lr scheduler)')
@@ -45,7 +45,7 @@ def parse_opts():
         help='Interation for saving model')
     parser.add_argument(
         '--n_epochs',
-        default=200,
+        default=50,
         type=int,
         help='Number of total epochs to run')
     parser.add_argument(

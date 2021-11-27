@@ -101,6 +101,7 @@ def generate_model(opt):
         base_parameters = list(filter(lambda p: id(p) not in new_parameters_id, model.parameters()))
         parameters = {'base_parameters': base_parameters, 
                       'new_parameters': new_parameters}
+        
         return model, parameters
 
     return model, model.parameters()

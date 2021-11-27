@@ -58,10 +58,11 @@ class BasicBlock(nn.Module):
         out = self.bn2(out)
 
         if self.downsample is not None:
-            residual l
+            residual = self.downsample(x)
+            
         out += residual
         out = self.linear(out)
-
+        
         return out
 
 class Bottleneck(nn.Module):
@@ -103,7 +104,6 @@ class Bottleneck(nn.Module):
 
         return out
 
-
 class ResNet(nn.Module):
 
     def __init__(self,
@@ -125,6 +125,7 @@ class ResNet(nn.Module):
             stride=(2, 2, 2),
             padding=(3, 3, 3),
             bias=False)       
+        
         self.bn1 = nn.BatchNorm3d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool3d(kernel_size=(3, 3, 3), stride=2, padding=1)
@@ -135,6 +136,7 @@ class ResNet(nn.Module):
             block, 256, layers[2], shortcut_type, stride=1, dilation=2)
         self.layer4 = self._make_layer(
             block, 512, layers[3], shortcut_type, stride=1, dilation=4)
+        
         self.conv_seg = nn.Sequential(
                                         nn.ConvTranspose3d(
                                         512 * block.expansion,
@@ -160,9 +162,12 @@ class ResNet(nn.Module):
                                         stride=(1, 1, 1),
                                         bias=False) 
                                         )
-        self.linear = nn.Linear(112, 1)
-        self.linear2 = nn.Linear(1* 3* 14* 112* 1,1)
         
+        self.linear = nn.Linear(112, 1)
+        self.fc1 = nn.Sequential(
+            nn.Linear(4704, 112),
+        )
+
         for m in self.modules():
             if isinstance(m, nn.Conv3d):
                 m.weight = nn.init.kaiming_normal(m.weight, mode='fan_out')
@@ -207,8 +212,9 @@ class ResNet(nn.Module):
         x = self.layer4(x)
         x = self.conv_seg(x)
         x = self.relu(self.linear(x))
-        x = x.view(-1,x.size()[0]*x.size()[1]*x.size()[2]*x.size()[3]*x.size()[4])
-        x = self.relu(self.linear2(x))
+        x = x.view((x.size(0), -1))
+        x = self.fc1(x.view((x.size(0), -1)))
+        x = self.linear(x)
 
         return x
 

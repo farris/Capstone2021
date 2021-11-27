@@ -58,6 +58,7 @@ class BrainS18Dataset(Dataset):
             #mask_array = self.__nii2tensorarray__(mask_array)
 
             #assert img_array.shape ==  mask_array.shape, "img shape:{} is not equal to mask shape:{}".format(img_array.shape, mask_array.shape)
+            
             return img_array, mask_array
         
         elif self.phase == "test":

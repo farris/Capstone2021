@@ -184,66 +184,66 @@ id,monkey_id,iop,icp,torch_present,scan_shape,constructed_filepath,training,oct_
 183,2,30,45,TRUE,"[512, 512, 2048]",monkey_2_8.22.13/raw bog and tiffs/highhighICP/30mmHg/3.oct,TRUE,TRUE,TRUE,monkey_2_8.22.13/raw bog and tiffs/highhighICP/30mmHg,monkey_2_8.22.13/'raw bog and tiffs'/highhighICP/30mmHg,3,08/22/2013,3:09,OD,3x3,,zixiao,,TRUE
 184,2,50,45,TRUE,"[512, 512, 2048]",monkey_2_8.22.13/raw bog and tiffs/highhighICP/50mmHg/1.oct,TRUE,TRUE,TRUE,monkey_2_8.22.13/raw bog and tiffs/highhighICP/50mmHg,monkey_2_8.22.13/'raw bog and tiffs'/highhighICP/50mmHg,1,08/22/2013,3:13,OD,5x5,,zixiao,,TRUE
 185,2,50,44,TRUE,"[512, 512, 2048]",monkey_2_8.22.13/raw bog and tiffs/highhighICP/50mmHg/2.oct,TRUE,TRUE,TRUE,monkey_2_8.22.13/raw bog and tiffs/highhighICP/50mmHg,monkey_2_8.22.13/'raw bog and tiffs'/highhighICP/50mmHg,2,08/22/2013,3:14,OD,3x3,,zixiao,,TRUE
-186,3,15,7,FALSE,,,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,1,7/10/14,11:20,OD,5x5,,eric,Missing from spreadsheet,FALSE
-187,3,15,7,FALSE,,,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,2,7/10/14,11:21,OD,5x5,,eric,Missing from spreadsheet,FALSE
-188,3,15,7,FALSE,,,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,3,7/10/14,11:22,OD,5x5,,eric,Missing from spreadsheet,FALSE
-189,3,15,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/15,4,7/10/14,11:24,OD,5x5,,eric,,FALSE
-190,3,15,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/15,5,7/10/14,11:26,OD,5x5,,eric,,FALSE
-191,3,15,7,FALSE,,,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,6,7/10/14,11:28,OD,7x7,,eric,Missing from spreadsheet,FALSE
-192,3,30,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,1,7/10/14,11:33,OD,7x7,,eric,,FALSE
-193,3,30,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,2,7/10/14,11:40,OD,5x5,,eric,,FALSE
-194,3,30,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,3,7/10/14,11:42,OD,5x5,,eric,,FALSE
-195,3,30,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,4,7/10/14,11:44,OD,5x5,,eric,,FALSE
-196,3,50,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,1,7/10/14,11:54,OD,7x7,,eric,,FALSE
-197,3,50,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,2,7/10/14,11:55,OD,7x7,,eric,,FALSE
-198,3,50,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,3,7/10/14,11:56,OD,5x5,,eric,,FALSE
-199,3,50,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,4,7/10/14,11:58,OD,5x5,,eric,,FALSE
-200,3,5,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,1,7/10/14,12:06,OD,7x7,,eric,,FALSE
-201,3,5,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,2,7/10/14,12:07,OD,7x7,,eric,,FALSE
-202,3,5,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,3,7/10/14,12:08,OD,5x5,,eric,,FALSE
-203,3,5,7,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,4,7/10/14,12:10,OD,5x5,,eric,,FALSE
-204,3,7,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,1,7/10/14,12:20,OD,7x7,,eric,,FALSE
-205,3,7,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,2,7/10/14,12:21,OD,7x7,,eric,,FALSE
-206,3,7,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,3,7/10/14,12:22,OD,5x5,,eric,,FALSE
-207,3,7,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,4,7/10/14,12:24,OD,5x5,,eric,,FALSE
-208,3,30,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,1,7/10/14,12:29,OD,7x7,,eric,,FALSE
-209,3,30,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,2,7/10/14,12:30,OD,7x7,,eric,,FALSE
-210,3,30,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,3,7/10/14,12:31,OD,5x5,,eric,,FALSE
-211,3,30,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,4,7/10/14,12:32,OD,5x5,,eric,,FALSE
-212,3,50,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,1,7/10/14,12:37,OD,7x7,,eric,,FALSE
-213,3,50,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,2,7/10/14,12:38,OD,7x7,,eric,,FALSE
-214,3,50,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,3,7/10/14,12:42,OD,5x5,,eric,,FALSE
-215,3,50,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,4,7/10/14,12:43,OD,5x5,,eric,,FALSE
-216,3,5,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,1,7/10/14,12:51,OD,7x7,,eric,,FALSE
-217,3,5,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,2,7/10/14,12:52,OD,7x7,,eric,,FALSE
-218,3,5,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,3,7/10/14,12:54,OD,5x5,,eric,,FALSE
-219,3,5,5,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,4,7/10/14,12:56,OD,5x5,,eric,,FALSE
-220,3,15,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/15,1,7/10/14,1:11,OD,7x7,Bad,eric,,FALSE
-221,3,15,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/15,2,7/10/14,1:12,OD,7x7,Bad (see ALC but not PLC),eric,,FALSE
-222,3,15,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/15,3,7/10/14,1:16,OD,5x5,OK (clear pore on one side),eric,,FALSE
-223,3,15,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/15,4,7/10/14,1:18,OD,5x5,OK,eric,,FALSE
-224,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/30,1,7/10/14,1:25,OD,7x7,Pretty good,eric,,FALSE
-225,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/30,2,7/10/14,1:26,OD,7x7,Pretty good,eric,,FALSE
-226,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/30,3,7/10/14,1:27,OD,5x5,Pretty good,eric,,FALSE
-227,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/30,4,7/10/14,1:28,OD,5x5,"Nice (Still see beams in pores, but there seems to be some distortions. Left LC looks good, not sure what is wrong with R LC)",eric,,FALSE
-228,3,50,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/50,1,7/10/14,1:33,OD,7x7,OK,eric,,FALSE
-229,3,50,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/50,2,7/10/14,1:34,OD,7x7,"OK, wasn`t great",eric,,FALSE
-230,3,50,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/50,3,7/10/14,1:36,OD,5x5,"OK, not good",eric,,FALSE
-231,3,50,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/50,4,7/10/14,1:37,OD,5x5,OK,eric,,FALSE
-232,3,5,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/5,1,7/10/14,1:44,OD,7x7,Just OK,eric,,FALSE
-233,3,5,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/5,2,7/10/14,1:45,OD,7x7,OK,eric,,FALSE
-234,3,5,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/5,3,7/10/14,1:47,OD,5x5,Bad,eric,,FALSE
-235,3,5,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/high/5,4,7/10/14,1:49,OD,5x5,Really bad,eric,,FALSE
-236,3,15,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,1,7/10/14,2:03,OD,7x7,OK,eric,,FALSE
-237,3,15,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,2,7/10/14,2:04,OD,7x7,OK,eric,,FALSE
-238,3,15,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,3,7/10/14,2:07,OD,5x5,Good,eric,,FALSE
-239,3,15,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,4,7/10/14,2:08,OD,5x5,Good,eric,,FALSE
-240,3,30,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,1,7/10/14,2:16,OD,7x7,OK,eric,,FALSE
-241,3,30,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,2,7/10/14,2:18,OD,7x7,OK,eric,,FALSE
-242,3,30,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,3,7/10/14,2:20,OD,5x5,Poor,eric,,FALSE
-243,3,30,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,4,7/10/14,2:21,OD,5x5,Poor,eric,,FALSE
-244,3,50,45,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/50,1,7/10/14,2:27,OD,7x7,Poor,eric,,FALSE
-245,3,50,42,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/50,2,7/10/14,2:29,OD,7x7,"Poor; ICP starts to drop, no observable reason, possible leakage. Decided not to continue, and proceed with OS",eric,,FALSE
+186,3,15,7,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15/1.tif,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,1,7/10/14,11:20,OD,5x5,,eric,Missing from spreadsheet,FALSE
+187,3,15,7,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15/2.tif,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,2,7/10/14,11:21,OD,5x5,,eric,Missing from spreadsheet,FALSE
+188,3,15,7,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15/3.tif,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,3,7/10/14,11:22,OD,5x5,,eric,Missing from spreadsheet,FALSE
+189,3,15,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/15/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/15,4,7/10/14,11:24,OD,5x5,,eric,,TRUE
+190,3,15,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/15/5.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/15,5,7/10/14,11:26,OD,5x5,,eric,,TRUE
+191,3,15,7,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15/6.tif,FALSE,FALSE,FALSE,,monkey_3_7.10.14/tiffs/OD/normal/15,6,7/10/14,11:28,OD,7x7,,eric,Missing from spreadsheet,FALSE
+192,3,30,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/30/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,1,7/10/14,11:33,OD,7x7,,eric,,TRUE
+193,3,30,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/30/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,2,7/10/14,11:40,OD,5x5,,eric,,TRUE
+194,3,30,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/30/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,3,7/10/14,11:42,OD,5x5,,eric,,TRUE
+195,3,30,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/30/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/30,4,7/10/14,11:44,OD,5x5,,eric,,TRUE
+196,3,50,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/50/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,1,7/10/14,11:54,OD,7x7,,eric,,TRUE
+197,3,50,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/50/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,2,7/10/14,11:55,OD,7x7,,eric,,TRUE
+198,3,50,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/50/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,3,7/10/14,11:56,OD,5x5,,eric,,TRUE
+199,3,50,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/50/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/50,4,7/10/14,11:58,OD,5x5,,eric,,TRUE
+200,3,5,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/5/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,1,7/10/14,12:06,OD,7x7,,eric,,TRUE
+201,3,5,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/5/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,2,7/10/14,12:07,OD,7x7,,eric,,TRUE
+202,3,5,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/5/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,3,7/10/14,12:08,OD,5x5,,eric,,TRUE
+203,3,5,7,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/normal/5/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/normal/5,4,7/10/14,12:10,OD,5x5,,eric,,TRUE
+204,3,7,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/15/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,1,7/10/14,12:20,OD,7x7,,eric,,TRUE
+205,3,7,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/15/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,2,7/10/14,12:21,OD,7x7,,eric,,TRUE
+206,3,7,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/15/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,3,7/10/14,12:22,OD,5x5,,eric,,TRUE
+207,3,7,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/15/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/15,4,7/10/14,12:24,OD,5x5,,eric,,TRUE
+208,3,30,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/30/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,1,7/10/14,12:29,OD,7x7,,eric,,TRUE
+209,3,30,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/30/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,2,7/10/14,12:30,OD,7x7,,eric,,TRUE
+210,3,30,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/30/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,3,7/10/14,12:31,OD,5x5,,eric,,TRUE
+211,3,30,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/30/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/30,4,7/10/14,12:32,OD,5x5,,eric,,TRUE
+212,3,50,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/50/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,1,7/10/14,12:37,OD,7x7,,eric,,TRUE
+213,3,50,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/50/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,2,7/10/14,12:38,OD,7x7,,eric,,TRUE
+214,3,50,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/50/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,3,7/10/14,12:42,OD,5x5,,eric,,TRUE
+215,3,50,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/50/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/50,4,7/10/14,12:43,OD,5x5,,eric,,TRUE
+216,3,5,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/5/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,1,7/10/14,12:51,OD,7x7,,eric,,TRUE
+217,3,5,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/5/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,2,7/10/14,12:52,OD,7x7,,eric,,TRUE
+218,3,5,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/5/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,3,7/10/14,12:54,OD,5x5,,eric,,TRUE
+219,3,5,5,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/low/5/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/low/5,4,7/10/14,12:56,OD,5x5,,eric,,TRUE
+220,3,15,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/15/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/15,1,7/10/14,1:11,OD,7x7,Bad,eric,,TRUE
+221,3,15,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/15/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/15,2,7/10/14,1:12,OD,7x7,Bad (see ALC but not PLC),eric,,TRUE
+222,3,15,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/15/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/15,3,7/10/14,1:16,OD,5x5,OK (clear pore on one side),eric,,TRUE
+223,3,15,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/15/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/15,4,7/10/14,1:18,OD,5x5,OK,eric,,TRUE
+224,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/30/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/30,1,7/10/14,1:25,OD,7x7,Pretty good,eric,,TRUE
+225,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/30/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/30,2,7/10/14,1:26,OD,7x7,Pretty good,eric,,TRUE
+226,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/30/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/30,3,7/10/14,1:27,OD,5x5,Pretty good,eric,,TRUE
+227,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/30/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/30,4,7/10/14,1:28,OD,5x5,"Nice (Still see beams in pores, but there seems to be some distortions. Left LC looks good, not sure what is wrong with R LC)",eric,,TRUE
+228,3,50,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/50/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/50,1,7/10/14,1:33,OD,7x7,OK,eric,,TRUE
+229,3,50,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/50/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/50,2,7/10/14,1:34,OD,7x7,"OK, wasn`t great",eric,,TRUE
+230,3,50,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/50/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/50,3,7/10/14,1:36,OD,5x5,"OK, not good",eric,,TRUE
+231,3,50,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/50/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/50,4,7/10/14,1:37,OD,5x5,OK,eric,,TRUE
+232,3,5,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/5/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/5,1,7/10/14,1:44,OD,7x7,Just OK,eric,,TRUE
+233,3,5,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/5/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/5,2,7/10/14,1:45,OD,7x7,OK,eric,,TRUE
+234,3,5,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/5/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/5,3,7/10/14,1:47,OD,5x5,Bad,eric,,TRUE
+235,3,5,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highï€¨/5/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highï€¨/5,4,7/10/14,1:49,OD,5x5,Really bad,eric,,TRUE
+236,3,15,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/15/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,1,7/10/14,2:03,OD,7x7,OK,eric,,TRUE
+237,3,15,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/15/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,2,7/10/14,2:04,OD,7x7,OK,eric,,TRUE
+238,3,15,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/15/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,3,7/10/14,2:07,OD,5x5,Good,eric,,TRUE
+239,3,15,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/15/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/15,4,7/10/14,2:08,OD,5x5,Good,eric,,TRUE
+240,3,30,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/30/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,1,7/10/14,2:16,OD,7x7,OK,eric,,TRUE
+241,3,30,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/30/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,2,7/10/14,2:18,OD,7x7,OK,eric,,TRUE
+242,3,30,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/30/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,3,7/10/14,2:20,OD,5x5,Poor,eric,,TRUE
+243,3,30,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/30/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/30,4,7/10/14,2:21,OD,5x5,Poor,eric,,TRUE
+244,3,50,45,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/50/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/50,1,7/10/14,2:27,OD,7x7,Poor,eric,,TRUE
+245,3,50,42,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OD/highhigh/50/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OD/highhigh/50,2,7/10/14,2:29,OD,7x7,"Poor; ICP starts to drop, no observable reason, possible leakage. Decided not to continue, and proceed with OS",eric,,TRUE
 246,3,15,27,FALSE,,,FALSE,FALSE,FALSE,,NOT FOUND,1,7/10/14,3:13,OS,5x5,Good,eric,NOT FOUND,FALSE
 247,3,15,27,FALSE,,,FALSE,FALSE,FALSE,,NOT FOUND,2,7/10/14,3:15,OS,5x5,Good,eric,NOT FOUND,FALSE
 248,3,15,27,FALSE,,,FALSE,FALSE,FALSE,,NOT FOUND,3,7/10/14,3:17,OS,7x7,Good,eric,NOT FOUND,FALSE
@@ -259,35 +259,35 @@ id,monkey_id,iop,icp,torch_present,scan_shape,constructed_filepath,training,oct_
 258,3,15,24,FALSE,,,FALSE,FALSE,FALSE,,NOT FOUND,1,7/10/14,3:43,OS,7x7,Good,eric,NOT FOUND,FALSE
 259,3,15,24,FALSE,,,FALSE,FALSE,FALSE,,NOT FOUND,2,7/10/14,3:44,OS,7x7,Good,eric,NOT FOUND,FALSE
 260,3,15,24,FALSE,,,FALSE,FALSE,FALSE,,NOT FOUND,3,7/10/14,3:47,OS,5x5,Good; Find out that all this time were changing the wrong IOP reservoir (the one attached to the OD),eric,NOT FOUND,FALSE
-261,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/30,1,7/10/14,3:54,OS,7x7,Pretty good,eric,,FALSE
-262,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/30,2,7/10/14,3:56,OS,7x7,Good,eric,,FALSE
-263,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/30,3,7/10/14,3:57,OS,5x5,Good,eric,,FALSE
-264,3,30,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/30,4,7/10/14,3:58,OS,5x5,Good,eric,,FALSE
-265,3,50,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/50,1,7/10/14,4:04,OS,7x7,"OK, nice curvature of LC",eric,,FALSE
-266,3,50,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/50,2,7/10/14,4:04,OS,7x7,One of the best LC,eric,,FALSE
-267,3,50,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/50,3,7/10/14,4:06,OS,5x5,One of the best LC,eric,,FALSE
+261,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/30/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/30,1,7/10/14,3:54,OS,7x7,Pretty good,eric,,TRUE
+262,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/30/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/30,2,7/10/14,3:56,OS,7x7,Good,eric,,TRUE
+263,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/30/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/30,3,7/10/14,3:57,OS,5x5,Good,eric,,TRUE
+264,3,30,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/30/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/30,4,7/10/14,3:58,OS,5x5,Good,eric,,TRUE
+265,3,50,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/50/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/50,1,7/10/14,4:04,OS,7x7,"OK, nice curvature of LC",eric,,TRUE
+266,3,50,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/50/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/50,2,7/10/14,4:04,OS,7x7,One of the best LC,eric,,TRUE
+267,3,50,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/50/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/50,3,7/10/14,4:06,OS,5x5,One of the best LC,eric,,TRUE
 268,3,50,26,FALSE,,,FALSE,FALSE,FALSE,,NOT FOUND,4,7/10/14,4:07,OS,5x5,One of the best LC,eric,NOT FOUND,FALSE
-269,3,50,27,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/50,5,7/10/14,4:08,OS,5x5,One of the best LC,eric,,FALSE
-270,3,5,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/5,1,7/10/14,4:13,OS,7x7,Just OK,,,FALSE
-271,3,5,26,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/5,2,7/10/14,4:14,OS,7x7,OK,,,FALSE
-272,3,5,26,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/5,3,7/10/14,4:15,OS,5x5,OK,,,FALSE
-273,3,5,25,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp27'/5,4,7/10/14,4:17,OS,5x5,OK,,,FALSE
-274,3,15,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/15,1,7/10/14,4:29,OS,7x7,"Not bad, OK",eric,,FALSE
-275,3,15,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/15,2,7/10/14,4:30,OS,7x7,"Not bad, OK",eric,,FALSE
-276,3,15,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/15,3,7/10/14,4:31,OS,5x5,Good,eric,,FALSE
-277,3,15,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/15,4,7/10/14,4:32,OS,5x5,Good,eric,,FALSE
-278,3,30,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/30,1,7/10/14,4:36,OS,7x7,Good,eric,,FALSE
-279,3,30,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/30,2,7/10/14,4:37,OS,7x7,Good,eric,,FALSE
-280,3,30,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/30,3,7/10/14,4:38,OS,5x5,Good,eric,,FALSE
-281,3,30,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/30,4,7/10/14,4:39,OS,5x5,Good,eric,,FALSE
-282,3,50,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/50,1,7/10/14,4:44,OS,7x7,Very good,eric,,FALSE
-283,3,50,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/50,2,7/10/14,4:45,OS,7x7,Very good,eric,,FALSE
-284,3,50,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/50,3,7/10/14,4:46,OS,5x5,Very good,eric,,FALSE
-285,3,50,17,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/50,4,7/10/14,4:47,OS,5x5,Excellent,eric,,FALSE
-286,3,5,18,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/5,1,7/10/14,4:54,OS,7x7,Low,eric,,FALSE
-287,3,5,18,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/5,2,7/10/14,4:55,OS,7x7,Low,eric,,FALSE
-288,3,5,18,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/5,3,7/10/14,4:56,OS,5x5,Low,eric,,FALSE
-289,3,5,18,FALSE,,,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/'high icp17'/5,4,7/10/14,4:57,OS,5x5,Low,eric,,FALSE
+269,3,50,27,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/50/5.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/50,5,7/10/14,4:08,OS,5x5,One of the best LC,eric,,TRUE
+270,3,5,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/5/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/5,1,7/10/14,4:13,OS,7x7,Just OK,,,TRUE
+271,3,5,26,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/5/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/5,2,7/10/14,4:14,OS,7x7,OK,,,TRUE
+272,3,5,26,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/5/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/5,3,7/10/14,4:15,OS,5x5,OK,,,TRUE
+273,3,5,25,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp27/5/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp27/5,4,7/10/14,4:17,OS,5x5,OK,,,TRUE
+274,3,15,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/15/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/15,1,7/10/14,4:29,OS,7x7,"Not bad, OK",eric,,TRUE
+275,3,15,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/15/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/15,2,7/10/14,4:30,OS,7x7,"Not bad, OK",eric,,TRUE
+276,3,15,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/15/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/15,3,7/10/14,4:31,OS,5x5,Good,eric,,TRUE
+277,3,15,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/15/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/15,4,7/10/14,4:32,OS,5x5,Good,eric,,TRUE
+278,3,30,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/30/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/30,1,7/10/14,4:36,OS,7x7,Good,eric,,TRUE
+279,3,30,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/30/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/30,2,7/10/14,4:37,OS,7x7,Good,eric,,TRUE
+280,3,30,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/30/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/30,3,7/10/14,4:38,OS,5x5,Good,eric,,TRUE
+281,3,30,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/30/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/30,4,7/10/14,4:39,OS,5x5,Good,eric,,TRUE
+282,3,50,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/50/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/50,1,7/10/14,4:44,OS,7x7,Very good,eric,,TRUE
+283,3,50,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/50/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/50,2,7/10/14,4:45,OS,7x7,Very good,eric,,TRUE
+284,3,50,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/50/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/50,3,7/10/14,4:46,OS,5x5,Very good,eric,,TRUE
+285,3,50,17,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/50/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/50,4,7/10/14,4:47,OS,5x5,Excellent,eric,,TRUE
+286,3,5,18,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/5/1.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/5,1,7/10/14,4:54,OS,7x7,Low,eric,,TRUE
+287,3,5,18,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/5/2.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/5,2,7/10/14,4:55,OS,7x7,Low,eric,,TRUE
+288,3,5,18,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/5/3.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/5,3,7/10/14,4:56,OS,5x5,Low,eric,,TRUE
+289,3,5,18,TRUE,"[512, 512, 1024]",monkey_3_7.10.14/tiffs/OS/high icp17/5/4.tif,TRUE,FALSE,TRUE,,monkey_3_7.10.14/tiffs/OS/high icp17/5,4,7/10/14,4:57,OS,5x5,Low,eric,,TRUE
 290,4,15,,TRUE,"[512, 512, 2048]",monkey_4_2.19.15/raw/Monkey4_OD/ICP_norm/15mmhg/1.oct,TRUE,TRUE,TRUE,monkey_4_2.19.15/raw/Monkey4_OD/ICP_norm/15mmhg,monkey_4_2.19.15/'bog and tiff'/OD/ICP_norm/15mmhg,1,2/19/15,10:01,OD,5x5,,eric,"Norm is a baseline and we cannot fill in an ICP value. Its possible the baseline ICP is 15, but the professor cannot guarantee this is the case",TRUE
 291,4,15,,TRUE,"[512, 512, 2048]",monkey_4_2.19.15/raw/Monkey4_OD/ICP_norm/15mmhg/2.oct,TRUE,TRUE,TRUE,monkey_4_2.19.15/raw/Monkey4_OD/ICP_norm/15mmhg,monkey_4_2.19.15/'bog and tiff'/OD/ICP_norm/15mmhg,2,2/19/15,10:19,OD,5x5,,eric,,TRUE
 292,4,15,,TRUE,"[512, 512, 2048]",monkey_4_2.19.15/raw/Monkey4_OD/ICP_norm/15mmhg/3.oct,TRUE,TRUE,TRUE,monkey_4_2.19.15/raw/Monkey4_OD/ICP_norm/15mmhg,monkey_4_2.19.15/'bog and tiff'/OD/ICP_norm/15mmhg,3,2/19/15,10:22,OD,5x5,,eric,,TRUE

@@ -34,7 +34,7 @@ def test(data_loader, model, img_names, sets):
     return masks
 
 if __name__ == '__main__':
-    # settting
+    # setting
     sets = parse_opts()
     sets.target_type = "normal"
     sets.phase = 'test'
@@ -62,7 +62,10 @@ if __name__ == '__main__':
         label = np.load(os.path.join(sets.data_root, label_names[idx]))
         label = np.mean(label.f.arr_0)
         labels = np.append(labels, label)
-    print(labels)
+        
+    print('actual y:', labels)
+    print('predicted y:', masks)
+    
     r_squared = r2_score(labels, masks)
     
     # print result

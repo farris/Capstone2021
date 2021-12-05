@@ -50,9 +50,6 @@ def train(dataloader_train,
         for batch_id, batch_data in enumerate(dataloader_train):
             # getting data batch
             batch_id_sp = epoch * batches_per_epoch + batch_id 
-            print('------------------')
-            print(batch_id_sp)
-            print('------------------')
             icp = batch_data['icp'].float().unsqueeze(1).cuda()
             iop = batch_data['iop'].float().cuda()
             scan = batch_data['scan'].float().cuda()
@@ -83,7 +80,10 @@ def train(dataloader_train,
                 model.eval()
                 print('')
                 print('Validating...')
+                i = 0
+                temp = []
                 for batch_id_val, batch_data_val in enumerate(dataloader_val):
+                    i+=1
                     icp_val = batch_data_val['icp'].float().unsqueeze(1).cuda()
                     iop_val = batch_data_val['iop'].float().cuda()
                     
@@ -95,11 +95,14 @@ def train(dataloader_train,
                     if device == 'cuda': 
                         scan_val = scan_val.to(device)
                     preds_val = model(scan_val.unsqueeze_(1),iop_val)
+                   
                     loss_value_val = loss(preds_val, icp_val)
+                    temp.append(loss_value_val.item())
                     
-                    print('Loss on validation: {:.3f}'.format(loss_value_val))
-                    print('')
                 
+                print('-----------------------------------------------------')
+                print(np.mean(temp))
+                print('-----------------------------------------------------')
                 model.train()
 
             # save model
@@ -127,27 +130,35 @@ labels = labels[labels['torch_present'] & ~labels['icp'].isnull() & ~labels['iop
 labels['icp'] = labels['icp'].astype('float')
 labels['iop'] = labels['iop'].astype('float')
 
+# print(labels)
+# train_labels = labels[labels['monkey_id'] != 14] # 9
+# # 8 handpicked examples 
+# val_examples = [1751, 1754, 1761, 1766]
+# val_labels = labels[labels['id'].isin(val_examples)]
 
-train_labels = labels[labels['monkey_id'] != 14]
-# 8 handpicked examples 
-val_examples = [1751, 1754, 1761, 1766]
-val_labels = labels[labels['id'].isin(val_examples)]
+train_labels =labels.sample(frac=0.99,random_state=200) #random state is a seed value
+val_labels =labels.drop(train_labels.index)
 
+print(len(train_labels))
+print(len(val_labels))
 
 
 med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels)
 med_val = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', val_labels)
 
-dataloader_train = DataLoader(med_train, batch_size=2,shuffle=True) 
-dataloader_val = DataLoader(med_val, batch_size=1, num_workers=2, shuffle=False)
+dataloader_train = DataLoader(med_train, batch_size=6,shuffle=True) 
+dataloader_val = DataLoader(med_val, batch_size=1, shuffle=False)
 
+print(len(dataloader_train))
+print(len(dataloader_val))
 
 
 model = resnet.resnet10(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
-EPOCHS = 1
-OPTIMIZER = torch.optim.SGD(model.parameters(), lr=1e-5, momentum=0.9, weight_decay=1e-3)
+EPOCHS = 20
+#OPTIMIZER = torch.optim.SGD(model.parameters(), lr=1e-5, momentum=0.9, weight_decay=1e-3)
+OPTIMIZER = torch.optim.Adamax(model.parameters(), lr=0.0001)
 SCHEDULER = lr_scheduler.ExponentialLR(OPTIMIZER, gamma=0.99)
-LOSS = nn.MSELoss(reduction='sum')
+LOSS = nn.MSELoss(reduction='mean')
 
 # # load in in case of warm start
 # warm_start = torch.load('models/models/epoch_0_batch_100.pth.tar') 

@@ -187,12 +187,10 @@ class ResNet(nn.Module):
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.layer4(x)
-
+        #conv_seg
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
-        
-        
-
+    
         
         IOP = IOP.unsqueeze_(1)
         IOP = IOP.repeat(1, 512)
@@ -200,7 +198,6 @@ class ResNet(nn.Module):
         x = F.relu(self.fc1(x))
         x = self.fc2(x)
 
-     
         return x
 
 def resnet10(**kwargs):

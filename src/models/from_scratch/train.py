@@ -5,6 +5,7 @@ import torch
 from torch import nn
 from torch import optim
 from torch.optim import lr_scheduler
+import torchio
 import time
 import json
 import cv2
@@ -129,7 +130,25 @@ val_labels = labels[labels['id'].isin(val_examples)]
 med_train = MonkeyEyeballsDataset('data/torch_arrays_128', train_labels)
 med_val = MonkeyEyeballsDataset('data/torch_arrays_128', val_labels)
 
-dataloader_train = DataLoader(med_train, batch_size=8, num_workers=2, shuffle=True, pin_memory=True) 
+transform = torchio.Compose([
+    torchio.RandomFlip(axes=2, p=0.5),
+    torchio.RandomAffine(
+        degrees=(0, 0, 10),
+        translation=1
+    ),
+    torchio.RandomBiasField( # computationally expensive can remove
+    order=3,
+    p=0.3
+    ),
+    torchio.RandomBlur(1, p=0.2),
+    torchio.RandomNoise(mean=0,std=1),
+    torchio.RandomGamma(),
+    torchio.RandomAffine(
+        scales=(1.2, 1.5)
+    )
+])
+
+dataloader_train = DataLoader(med_train, batch_size=8, num_workers=2, shuffle=True, pin_memory=True, transform=transform) 
 dataloader_val = DataLoader(med_val, batch_size=4, num_workers=2, shuffle=False, pin_memory=True)
 
 model = resnet.resnet10(sample_input_D=128, sample_input_H=128, sample_input_W=512)

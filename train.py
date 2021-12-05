@@ -190,7 +190,7 @@ transform = torchio.Compose([
 med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels,transform=transform)
 med_val = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', val_labels)
 
-dataloader_train = DataLoader(med_train, batch_size=8, num_workers=2, shuffle=True) 
+dataloader_train = DataLoader(med_train, batch_size=16, num_workers=2, shuffle=True) 
 dataloader_val = DataLoader(med_val, batch_size=4, shuffle=False)
 
 print(len(dataloader_train))

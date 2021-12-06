@@ -19,7 +19,7 @@ from torch.utils.data import Dataset, DataLoader
 
 import argparse
 from src.data.torch_utils import MonkeyEyeballsDataset
-    from src.models.from_scratch import resnet_for_multimodal_regression as resnet
+from src.models.from_scratch import resnet_for_multimodal_regression as resnet
 
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 parser.add_argument('--labels', default='data/monkey_data.csv', metavar='DF',

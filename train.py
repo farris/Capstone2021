@@ -20,8 +20,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 seed = 12345
 torch.manual_seed(seed)
 
-from src_eric.data.torch_utils import MonkeyEyeballsDataset
-from src_eric.models.from_scratch import resnet_for_multimodal_regression as resnet
+from src.data.torch_utils import MonkeyEyeballsDataset
+from src.models.from_scratch import resnet_for_multimodal_regression as resnet
 
 def train(dataloader_train, 
           dataloader_val, 
@@ -101,8 +101,10 @@ def train(dataloader_train,
                     
 
                     scan_val = batch_data_val['scan'].float().cuda()
-                    scan_val = (scan_val - 30) / 19
-                    icp_val = (icp_val - 15) / 11
+
+                    # scan_val = (scan_val - 30) / 19
+                    # icp_val = (icp_val - 15) / 11
+                    iop_val = (iop_val -22)/ 13
 
                     if device == 'cuda': 
                         scan_val = scan_val.to(device)
@@ -155,42 +157,43 @@ labels = labels[labels['torch_present'] & ~labels['icp'].isnull() & ~labels['iop
 labels['icp'] = labels['icp'].astype('float')
 labels['iop'] = labels['iop'].astype('float')
 
-print(labels)
-train_labels = labels[(labels['monkey_id'] != 14) & (labels['monkey_id'] != 9)] # 9
-# 8 handpicked examples 
-val_examples = [1751, 1754, 1761, 1766]
-val_labels = labels[labels['id'].isin(val_examples)]
+# print(labels)
+# train_labels = labels[(labels['monkey_id'] != 14) & (labels['monkey_id'] != 9)] # 9
+# # 8 handpicked examples 
+# val_examples = [1751, 1754, 1761, 1766]
+# val_labels = labels[labels['id'].isin(val_examples)]
 
 
-# train_labels =labels.sample(frac=0.99,random_state=200) #random state is a seed value
-# val_labels =labels.drop(train_labels.index)
+train_labels =labels.sample(frac=0.99,random_state=200) #random state is a seed value
+val_labels =labels.drop(train_labels.index)
 
 # print(len(train_labels))
 # print(len(val_labels))
 
 #TRANSFORM###############################################################################################
-transform = torchio.Compose([
-    torchio.RandomFlip(axes=2, p=0.5),
-    torchio.RandomAffine(
-        degrees=(0, 0, 10),
-        translation=1
-    ),
-    torchio.RandomBiasField( # computationally expensive can remove
-    order=3,
-    p=0.3
-    ),
-    torchio.RandomBlur(1, p=0.2),
-    torchio.RandomNoise(mean=0,std=1),
-    torchio.RandomGamma(),
-    torchio.RandomAffine(
-        scales=(1.2, 1.5)
-    )
-])
+# transform = torchio.Compose([
+#     torchio.RandomFlip(axes=2, p=0.5),
+#     torchio.RandomAffine(
+#         degrees=(0, 0, 10),
+#         translation=1
+#     ),
+#     torchio.RandomBiasField( # computationally expensive can remove
+#     order=3,
+#     p=0.3
+#     ),
+#     torchio.RandomBlur(1, p=0.2),
+#     torchio.RandomNoise(mean=0,std=1),
+#     torchio.RandomGamma(),
+#     torchio.RandomAffine(
+#         scales=(1.2, 1.5)
+#     )
+# ])
+
 #TRANSFORM###############################################################################################
 
-#med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels)
-med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels,transform=transform)
-med_val = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', val_labels)
+med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_standard', train_labels)
+#med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels,transform=transform)
+med_val = MonkeyEyeballsDataset('/scratch/fda239/torch_standard', val_labels)
 
 dataloader_train = DataLoader(med_train, batch_size=6, shuffle=True,pin_memory=True,num_workers=2 ) 
 dataloader_val = DataLoader(med_val, batch_size=4, shuffle=False)
@@ -199,7 +202,7 @@ print(len(dataloader_train))
 print(len(dataloader_val))
 
 
-model = resnet.resnet10(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
+model = resnet.resnet50(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
 EPOCHS = 100
 #OPTIMIZER = torch.optim.SGD(model.parameters(), lr=1e-9, momentum=0.9, weight_decay=1e-3)
 OPTIMIZER = torch.optim.Adamax(model.parameters(), lr=1e-5)

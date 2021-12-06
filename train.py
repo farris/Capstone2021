@@ -9,7 +9,7 @@ import time
 import torchio
 #import json
 #import cv2
-
+import gc
 torch.cuda.empty_cache()
 
 from torch.utils.data import Dataset, DataLoader
@@ -122,6 +122,8 @@ def train(dataloader_train,
                 np.save("val_loss_epoch.npy", np.asarray(val_loss_epoch))
                 np.save("train_loss_epoch.npy", np.asarray(train_loss_epoch))
                 
+                torch.cuda.empty_cache()
+                gc.collect()
                 model.train()
 
             # save model
@@ -186,21 +188,21 @@ transform = torchio.Compose([
 ])
 #TRANSFORM###############################################################################################
 
-
+#med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels)
 med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels,transform=transform)
 med_val = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', val_labels)
 
-dataloader_train = DataLoader(med_train, batch_size=16, num_workers=2, shuffle=True) 
+dataloader_train = DataLoader(med_train, batch_size=6, shuffle=True,pin_memory=True,num_workers=2 ) 
 dataloader_val = DataLoader(med_val, batch_size=4, shuffle=False)
 
 print(len(dataloader_train))
 print(len(dataloader_val))
 
 
-model = resnet.resnet50(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
-EPOCHS = 1
-#OPTIMIZER = torch.optim.SGD(model.parameters(), lr=1e-5, momentum=0.9, weight_decay=1e-3)
-OPTIMIZER = torch.optim.Adamax(model.parameters(), lr=3e-4)
+model = resnet.resnet10(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
+EPOCHS = 100
+#OPTIMIZER = torch.optim.SGD(model.parameters(), lr=1e-9, momentum=0.9, weight_decay=1e-3)
+OPTIMIZER = torch.optim.Adamax(model.parameters(), lr=1e-5)
 SCHEDULER = lr_scheduler.ExponentialLR(OPTIMIZER, gamma=0.99)
 LOSS = nn.MSELoss(reduction='mean')
 
@@ -208,6 +210,8 @@ LOSS = nn.MSELoss(reduction='mean')
 # warm_start = torch.load('models/models/epoch_0_batch_100.pth.tar') 
 # model.load_state_dict(warm_start['state_dict'])
 # OPTIMIZER.load_state_dict(warm_start['optimizer'])
+
+
 
 # if warm_start.get('epoch') is not None:
 #     current_epoch = warm_start.get('epoch')

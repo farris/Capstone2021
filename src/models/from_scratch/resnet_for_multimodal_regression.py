@@ -142,8 +142,8 @@ class ResNet(nn.Module):
             block, 512, layers[3], shortcut_type, stride=1, dilation=4)
         self.avgpool = nn.AdaptiveAvgPool3d((1,1,1))
 
-        self.fc1 = nn.Linear(1024, 512)
-        self.fc2 = nn.Linear(512, 1)
+        self.fc1 = nn.Linear(2560, 1280)
+        self.fc2 = nn.Linear(1280, 1)
         # self.fc3 = nn.Linear(50, 1)
         # self.fc4 = nn.Linear(320, 80)
         # self.fc5 = nn.Linear(80, 10)

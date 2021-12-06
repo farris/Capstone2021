@@ -141,7 +141,14 @@ class ResNet(nn.Module):
         self.layer4 = self._make_layer(
             block, 512, layers[3], shortcut_type, stride=1, dilation=4)
         self.avgpool = nn.AdaptiveAvgPool3d((1,1,1))
-        self.fc = nn.Linear(512 * block.expansion, 1)
+
+        self.fc1 = nn.Linear(1024, 512)
+        self.fc2 = nn.Linear(512, 1)
+        # self.fc3 = nn.Linear(50, 1)
+        # self.fc4 = nn.Linear(320, 80)
+        # self.fc5 = nn.Linear(80, 10)
+        # self.fc6 = nn.Linear(10, 1)
+        
 
         for m in self.modules():
             if isinstance(m, nn.Conv3d):
@@ -176,20 +183,25 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, x):
+    def forward(self, x,IOP):
         x = self.conv1(x)
         x = self.bn1(x)
         x = self.relu(x)
         x = self.maxpool(x)
-
         x = self.layer1(x)
         x = self.layer2(x)
         x = self.layer3(x)
         x = self.layer4(x)
-
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
-        x = self.fc(x)
+   
+        IOP = IOP.unsqueeze_(1)
+        IOP = IOP.repeat(1, 512)
+        x = torch.cat([IOP, x], dim=1)
+
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+    
         return x
 
 def resnet10(**kwargs):

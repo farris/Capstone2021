@@ -211,6 +211,7 @@ class ResNet(nn.Module):
         x = self.layer3(x)
         x = self.layer4(x)
         x = self.conv_seg(x)
+        
         x = self.relu(self.linear(x))
         x = x.view((x.size(0), -1))
         x = self.fc1(x.view((x.size(0), -1)))

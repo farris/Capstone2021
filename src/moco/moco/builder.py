@@ -23,13 +23,13 @@ class MoCo(nn.Module):
 
         # create the encoders
         # num_classes is the output fc dimension
-        self.encoder_q = base_encoder(num_classes=dim)
-        self.encoder_k = base_encoder(num_classes=dim)
+        self.encoder_q = base_encoder(sample_input_D=128, sample_input_H=128, sample_input_W=512)
+        self.encoder_k = base_encoder(sample_input_D=128, sample_input_H=128, sample_input_W=512)
 
-        if mlp:  # hack: brute-force replacement DONE: brute force replacement changed resnet code so this didnt have to change
+        if mlp:  # hack: brute-force replacement # DONE: surgery on the fc layer
             dim_mlp = self.encoder_q.fc.weight.shape[1]
-            self.encoder_q.fc = nn.Sequential(nn.Linear(dim_mlp, dim_mlp), nn.ReLU(), self.encoder_q.fc)
-            self.encoder_k.fc = nn.Sequential(nn.Linear(dim_mlp, dim_mlp), nn.ReLU(), self.encoder_k.fc)
+            self.encoder_q.fc = nn.Sequential(nn.Linear(dim_mlp, dim), nn.ReLU())
+            self.encoder_k.fc = nn.Sequential(nn.Linear(dim_mlp, dim), nn.ReLU())
 
         for param_q, param_k in zip(self.encoder_q.parameters(), self.encoder_k.parameters()):
             param_k.data.copy_(param_q.data)  # initialize

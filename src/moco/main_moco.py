@@ -20,13 +20,14 @@ import torch.utils.data.distributed
 import torchvision.models as models
 import torchio
 
-print(os.getcwd())
+# have to run this code in root dir
+import sys
+sys.path.append('./')
 
 import src.models.from_scratch.resnet_for_multimodal_regression as resnet 
 from src.data.torch_utils import MonkeyEyeballsDataset
 
-import moco.loader
-import moco.builder
+from src.moco import moco
 
 model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")

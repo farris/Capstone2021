@@ -63,7 +63,7 @@ def predict(model, dataloader, device, performances=None):
             scan = scan.to(device)
         preds = model(scan.unsqueeze_(1),iop)
 
-        performances['preds'].append(preds.numpy())
+        performances['pred'].append(preds.numpy())
         
     return performances
     

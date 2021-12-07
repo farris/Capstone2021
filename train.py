@@ -35,6 +35,12 @@ parser.add_argument('--save', default='models/run_{}'.format(datetime.datetime.t
     help='path to save models and losses')
 parser.add_argument('--batch', default=8, type=int, metavar='BATCH',
     help='number of samples per mini-batch')
+parser.add_argument('--warm_start_batch', default=None,
+    help='Batch number to warm start on')
+parser.add_argument('--warm_start_epoch', default=None,
+    help='Epoch number to warm start on')
+parser.add_argument('--warm_start_model', default=None,
+    help='Model filepath to warm start on')
 
 
 def main():
@@ -54,6 +60,7 @@ def main():
               save_interval, 
               save_folder,
               warm_start_epoch=0,
+              warm_start_batch=0,
               loss=nn.MSELoss(reduction='sum'), 
               total_epochs=100):
         # settings
@@ -72,10 +79,10 @@ def main():
         
         train_loss_epoch = []
         val_loss_epoch = []
-        for epoch in range(warm_start_epoch, total_epochs):
+        for epoch in range(args.warm_start_epoch, total_epochs):
             print('Start epoch {}'.format(epoch))
             
-            for batch_id, batch_data in enumerate(dataloader_train):
+            for batch_id, batch_data in enumerate(dataloader_train, start=args.warm_start_batch):
                 # getting data batch
                 batch_id_sp = epoch * batches_per_epoch + batch_id 
                 icp = batch_data['icp'].float().unsqueeze(1).cuda()
@@ -220,9 +227,17 @@ def main():
 
 
     model = resnet.resnet50(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
+
     OPTIMIZER = torch.optim.Adamax(model.parameters(), lr=args.lr)
     SCHEDULER = lr_scheduler.ExponentialLR(OPTIMIZER, gamma=0.99)
     LOSS = nn.MSELoss(reduction='mean')
+
+    if args.warm_start_model is not None:
+        warm_start = torch.load(args.model_path)
+        model.load_state_dict(warm_start['state_dict'])
+        OPTIMIZER.load_state_dict(warm_start['optimizer'])
+        args.save = os.path.dirname(args.warm_start_model)
+        
 
     # # load in in case of warm start
     # warm_start = torch.load('models/models/epoch_0_batch_100.pth.tar') 
@@ -240,7 +255,8 @@ def main():
           optimizer=OPTIMIZER, 
           scheduler=SCHEDULER, 
           total_epochs=args.epochs, 
-          warm_start_epoch=0,
+          warm_start_epoch=args.warm_start_epoch,
+          warm_start_batch=args.warm_start_batch,
           save_interval=159, 
           save_folder=args.save, # change this for a new run or change to pass it in as command line arg
           val_interval=10,

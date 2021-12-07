@@ -233,7 +233,7 @@ def main():
     LOSS = nn.MSELoss(reduction='mean')
 
     if args.warm_start_model is not None:
-        warm_start = torch.load(args.model_path)
+        warm_start = torch.load(args.warm_start_model)
         model.load_state_dict(warm_start['state_dict'])
         OPTIMIZER.load_state_dict(warm_start['optimizer'])
         args.save = os.path.dirname(args.warm_start_model)

@@ -62,11 +62,11 @@ def predict(model, dataloader, device, performances=None):
 
         if device == 'cuda': 
             scan = scan.to(device)
-        preds_unstandardized = model(scan.unsqueeze_(1),iop).squeeze()
-        preds = preds_unstandardized * 11 + 15
+        pred_unstandardized = model(scan.unsqueeze_(1),iop).squeeze()
+        pred = pred_unstandardized * 11 + 15
 
-        performances['pred_unstandardized'] = performances['preds_unstandardized'] + preds_unstandardized.cpu().detach().numpy().tolist()
-        performances['pred'] = performances['pred'] + preds.cpu().detach().numpy().tolist()
+        performances['pred_unstandardized'] = performances['pred_unstandardized'] + pred_unstandardized.cpu().detach().numpy().tolist()
+        performances['pred'] = performances['pred'] + pred.cpu().detach().numpy().tolist()
         
     return performances
     

@@ -186,15 +186,15 @@ def main():
     labels['iop'] = labels['iop'].astype('float')
 
     # print(labels)
-    # train_labels = labels[(labels['monkey_id'] != 14) & (labels['monkey_id'] != 9)] # 9
-    # # 8 handpicked examples 
-    # val_examples = [1751, 1754, 1761, 1766]
-    # val_labels = labels[labels['id'].isin(val_examples)]
+    train_labels = labels[(labels['monkey_id'] != 14) & (labels['monkey_id'] != 9)]
+    # 8 handpicked examples 
+    val_examples = [1751, 1754, 1761, 1766]
+    val_labels = labels[labels['id'].isin(val_examples)]
 
 
-    # get train and val labels
-    train_labels =labels.sample(frac=0.99,random_state=200) 
-    val_labels =labels.drop(train_labels.index)
+    # # get train and val labels
+    # train_labels =labels.sample(frac=0.99,random_state=200) 
+    # val_labels =labels.drop(train_labels.index)
 
     # print(len(train_labels))
     # print(len(val_labels))

@@ -37,7 +37,7 @@ parser.add_argument('--batch', default=4, type=int, metavar='BATCH',
 parser.add_argument('--save_path', default=None,
     help='Where to save predictions. Default in same folder as model path.')
 
-def predict(model, dataloader, performances=None):
+def predict(model, dataloader, device, performances=None):
     if performances is None:
         performances = {}
         performances['pred'] = []
@@ -89,7 +89,7 @@ def main():
     med = MonkeyEyeballsDataset(args.scans, labels)
     dataloader = DataLoader(med, batch_size=args.batch, shuffle=False)
 
-    performances = predict(model, dataloader)
+    performances = predict(model, dataloader, device)
     performances = pd.DataFrame(performances)
     performances.to_csv(args.save_path, index=False)
     print('Predictions saved to {}'.format(args.save_path))

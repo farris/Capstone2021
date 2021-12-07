@@ -49,9 +49,9 @@ def predict(model, dataloader, device, performances=None):
         icp = batch_data['icp'].float().unsqueeze(1).cuda()
         iop = batch_data['iop'].float().cuda()
 
-        performances['icp'].append(batch_data['icp'].numpy())
-        performances['iop'].append(batch_data['iop'].numpy())
-        performances['id'].append(batch_data['id'].numpy())
+        performances['icp'].append(batch_data['icp'].cpu().numpy())
+        performances['iop'].append(batch_data['iop'].cpu().numpy())
+        performances['id'].append(batch_data['id'].cpu().numpy())
 
         scan = batch_data['scan'].float().cuda()
 
@@ -63,7 +63,7 @@ def predict(model, dataloader, device, performances=None):
             scan = scan.to(device)
         preds = model(scan.unsqueeze_(1),iop)
 
-        performances['pred'].append(preds.numpy())
+        performances['pred'].append(preds.cpu().numpy())
         
     return performances
     

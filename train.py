@@ -39,7 +39,7 @@ parser.add_argument('--warm_start_batch', default=0, type=int,
     help='Batch number to warm start on')
 parser.add_argument('--warm_start_epoch', default=0, type=int,
     help='Epoch number to warm start on')
-parser.add_argument('--warm_start_model', default=0, type=str,
+parser.add_argument('--warm_start_model', default=None, type=str,
     help='Model filepath to warm start on')
 
 

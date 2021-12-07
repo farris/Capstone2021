@@ -19,6 +19,9 @@ import torch.utils.data
 import torch.utils.data.distributed
 import torchvision.models as models
 import torchio
+
+print(os.getcwd())
+
 import src.models.from_scratch.resnet_for_multimodal_regression as resnet 
 from src.data.torch_utils import MonkeyEyeballsDataset
 

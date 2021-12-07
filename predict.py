@@ -44,6 +44,7 @@ def predict(model, dataloader, device, performances=None):
         performances['icp'] = []
         performances['id'] = []
         performances['iop'] = []
+        performances['pred_unstandardized'] = []
 
     for batch_id, batch_data in enumerate(dataloader):
         icp = batch_data['icp'].float().unsqueeze(1).cuda()

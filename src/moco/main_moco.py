@@ -27,7 +27,7 @@ sys.path.append('./')
 import src.models.from_scratch.resnet_for_multimodal_regression as resnet 
 from src.data.torch_utils import MonkeyEyeballsDataset
 
-from src.moco import moco
+from src.moco.moco import loader, builder
 
 model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
@@ -162,7 +162,7 @@ def main_worker(gpu, ngpus_per_node, args):
                                 world_size=args.world_size, rank=args.rank)
     # create model
     print("=> creating model '{}'".format(args.arch))
-    model = moco.builder.MoCo(
+    model = builder.MoCo(
          resnet.resnet50(sample_input_D=128, sample_input_H=128, sample_input_W=512), # DONE: 3-D RESNET SURGERY HERE
         args.moco_dim, args.moco_k, args.moco_m, args.moco_t, args.mlp)
     print(model)
@@ -256,7 +256,7 @@ def main_worker(gpu, ngpus_per_node, args):
     labels['iop'] = labels['iop'].astype('float')
     train_dataset = MonkeyEyeballsDataset(args.scans, #DONE: swap with our custom dataset
         labels, 
-        transform=moco.loader.TwoCropsTransform(augmentation))
+        transform=loader.TwoCropsTransform(augmentation))
 
     if args.distributed:
         train_sampler = torch.utils.data.distributed.DistributedSampler(train_dataset)

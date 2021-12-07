@@ -165,6 +165,7 @@ def main():
                                 'state_dict': model.state_dict(),
                                 'optimizer': optimizer.state_dict()},
                                 model_save_path)
+                    print('Saving to {}'.format(model_save_path))
             
             
             
@@ -193,28 +194,23 @@ def main():
     # print(len(val_labels))
 
     #TRANSFORM###############################################################################################
-    # transform = torchio.Compose([
-    #     torchio.RandomFlip(axes=2, p=0.5),
-    #     torchio.RandomAffine(
-    #         degrees=(0, 0, 10),
-    #         translation=1
-    #     ),
-    #     torchio.RandomBiasField( # computationally expensive can remove
-    #     order=3,
-    #     p=0.3
-    #     ),
-    #     torchio.RandomBlur(1, p=0.2),
-    #     torchio.RandomNoise(mean=0,std=1),
-    #     torchio.RandomGamma(),
-    #     torchio.RandomAffine(
-    #         scales=(1.2, 1.5)
-    #     )
-    # ])
+    transform = torchio.Compose([
+        torchio.RandomFlip(axes=2, p=0.5),
+        torchio.RandomAffine(
+            degrees=(0, 0, 10),
+            translation=1
+        ),
+        torchio.RandomBlur(1, p=0.2),
+        torchio.RandomNoise(mean=0,std=1),
+        torchio.RandomGamma(),
+        torchio.RandomAffine(
+            scales=(1.2, 1.5)
+        )
+    ])
 
     #TRANSFORM###############################################################################################
 
-    med_train = MonkeyEyeballsDataset(args.scans, train_labels)
-    #med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels,transform=transform)
+    med_train = MonkeyEyeballsDataset(args.scans, train_labels, transform=transform)
     med_val = MonkeyEyeballsDataset(args.scans, val_labels)
 
     dataloader_train = DataLoader(med_train, batch_size=args.batch, shuffle=True,pin_memory=True,num_workers=2 ) 

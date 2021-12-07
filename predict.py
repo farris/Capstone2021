@@ -61,7 +61,7 @@ def predict(model, dataloader, device, performances=None):
 
         if device == 'cuda': 
             scan = scan.to(device)
-        preds = model(scan.unsqueeze_(1),iop)
+        preds = model(scan.unsqueeze_(1),iop).squeeze()
 
         performances['pred'] = performances['pred'] + preds.cpu().detach().numpy().tolist()
         

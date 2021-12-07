@@ -35,11 +35,11 @@ parser.add_argument('--save', default='models/run_{}'.format(datetime.datetime.t
     help='path to save models and losses')
 parser.add_argument('--batch', default=8, type=int, metavar='BATCH',
     help='number of samples per mini-batch')
-parser.add_argument('--warm_start_batch', default=None, type=int,
+parser.add_argument('--warm_start_batch', default=0, type=int,
     help='Batch number to warm start on')
-parser.add_argument('--warm_start_epoch', default=None, type=int,
+parser.add_argument('--warm_start_epoch', default=0, type=int,
     help='Epoch number to warm start on')
-parser.add_argument('--warm_start_model', default=None, type=str,
+parser.add_argument('--warm_start_model', default=0, type=str,
     help='Model filepath to warm start on')
 
 

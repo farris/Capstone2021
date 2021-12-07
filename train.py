@@ -168,9 +168,7 @@ def main():
                     print('Saving to {}'.format(model_save_path))
             
             
-            
             print('lr = {}'.format(scheduler.get_lr()))
-
 
 
         print('Finished training')
@@ -187,7 +185,8 @@ def main():
     # val_labels = labels[labels['id'].isin(val_examples)]
 
 
-    train_labels =labels.sample(frac=0.99,random_state=200) #random state is a seed value
+    # get train and val labels
+    train_labels =labels.sample(frac=0.99,random_state=200) 
     val_labels =labels.drop(train_labels.index)
 
     # print(len(train_labels))
@@ -221,7 +220,6 @@ def main():
 
 
     model = resnet.resnet50(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
-    #OPTIMIZER = torch.optim.SGD(model.parameters(), lr=1e-9, momentum=0.9, weight_decay=1e-3)
     OPTIMIZER = torch.optim.Adamax(model.parameters(), lr=args.lr)
     SCHEDULER = lr_scheduler.ExponentialLR(OPTIMIZER, gamma=0.99)
     LOSS = nn.MSELoss(reduction='mean')

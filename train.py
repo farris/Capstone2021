@@ -30,9 +30,9 @@ parser.add_argument('--epochs', default=200, type=int, metavar='N',
     help='number of total epochs to run')
 parser.add_argument('--lr', default=3e-4, type=float, metavar='LR',
     help='initial learning rate')
-parser.add_argument('--save', default='models/run_{}'.format(datetime.datetime.today().strftime('%Y-%m-%d')), 
+parser.add_argument('--save', default='models/run_{}'.format(datetime.datetime.today().strftime('%Y-%m-%d-%H-%M')), 
     type=str, metavar='SAVE_DIR',
-    help='path to save models')
+    help='path to save models and losses')
 parser.add_argument('--batch', default=8, type=int, metavar='BATCH',
     help='number of samples per mini-batch')
 
@@ -143,8 +143,8 @@ def main():
                     print(val_loss_epoch)
                     print('TRAIN LOSS EPOCH-----------------------------------------------------')
                     print(train_loss_epoch)
-                    np.save("val_loss_epoch.npy", np.asarray(val_loss_epoch))
-                    np.save("train_loss_epoch.npy", np.asarray(train_loss_epoch))
+                    np.save(os.path.join(args.save, "val_loss_epoch.npy"), np.asarray(val_loss_epoch))
+                    np.save(os.path.join(args.save, "train_loss_epoch.npy"), np.asarray(train_loss_epoch))
                     
                     torch.cuda.empty_cache()
                     gc.collect()

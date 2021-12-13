@@ -35,6 +35,12 @@ parser.add_argument('--save', default='models/run_{}'.format(datetime.datetime.t
     help='path to save models and losses')
 parser.add_argument('--batch', default=8, type=int, metavar='BATCH',
     help='number of samples per mini-batch')
+parser.add_argument('--warm_start_batch', default=0, type=int,
+    help='Batch number to warm start on')
+parser.add_argument('--warm_start_epoch', default=0, type=int,
+    help='Epoch number to warm start on')
+parser.add_argument('--warm_start_model', default=None, type=str,
+    help='Model filepath to warm start on')
 
 
 def main():
@@ -54,6 +60,7 @@ def main():
               save_interval, 
               save_folder,
               warm_start_epoch=0,
+              warm_start_batch=0,
               loss=nn.MSELoss(reduction='sum'), 
               total_epochs=100):
         # settings
@@ -72,10 +79,10 @@ def main():
         
         train_loss_epoch = []
         val_loss_epoch = []
-        for epoch in range(warm_start_epoch, total_epochs):
+        for epoch in range(args.warm_start_epoch, total_epochs):
             print('Start epoch {}'.format(epoch))
             
-            for batch_id, batch_data in enumerate(dataloader_train):
+            for batch_id, batch_data in enumerate(dataloader_train, start=args.warm_start_batch):
                 # getting data batch
                 batch_id_sp = epoch * batches_per_epoch + batch_id 
                 icp = batch_data['icp'].float().unsqueeze(1).cuda()
@@ -165,11 +172,10 @@ def main():
                                 'state_dict': model.state_dict(),
                                 'optimizer': optimizer.state_dict()},
                                 model_save_path)
-            
+                    print('Saving to {}'.format(model_save_path))
             
             
             print('lr = {}'.format(scheduler.get_lr()))
-
 
 
         print('Finished training')
@@ -180,41 +186,37 @@ def main():
     labels['iop'] = labels['iop'].astype('float')
 
     # print(labels)
-    # train_labels = labels[(labels['monkey_id'] != 14) & (labels['monkey_id'] != 9)] # 9
-    # # 8 handpicked examples 
-    # val_examples = [1751, 1754, 1761, 1766]
-    # val_labels = labels[labels['id'].isin(val_examples)]
+    train_labels = labels[(labels['monkey_id'] != 14) & (labels['monkey_id'] != 9)]
+    # 8 handpicked examples 
+    val_examples = [1751, 1754, 1761, 1766]
+    val_labels = labels[labels['id'].isin(val_examples)]
 
 
-    train_labels =labels.sample(frac=0.99,random_state=200) #random state is a seed value
-    val_labels =labels.drop(train_labels.index)
+    # # get train and val labels
+    # train_labels =labels.sample(frac=0.99,random_state=200) 
+    # val_labels =labels.drop(train_labels.index)
 
     # print(len(train_labels))
     # print(len(val_labels))
 
     #TRANSFORM###############################################################################################
-    # transform = torchio.Compose([
-    #     torchio.RandomFlip(axes=2, p=0.5),
-    #     torchio.RandomAffine(
-    #         degrees=(0, 0, 10),
-    #         translation=1
-    #     ),
-    #     torchio.RandomBiasField( # computationally expensive can remove
-    #     order=3,
-    #     p=0.3
-    #     ),
-    #     torchio.RandomBlur(1, p=0.2),
-    #     torchio.RandomNoise(mean=0,std=1),
-    #     torchio.RandomGamma(),
-    #     torchio.RandomAffine(
-    #         scales=(1.2, 1.5)
-    #     )
-    # ])
+    transform = torchio.Compose([
+        torchio.RandomFlip(axes=2, p=0.5),
+        torchio.RandomAffine(
+            degrees=(0, 0, 10),
+            translation=1
+        ),
+        torchio.RandomBlur(1, p=0.2),
+        torchio.RandomNoise(mean=0,std=1),
+        torchio.RandomGamma(),
+        torchio.RandomAffine(
+            scales=(1.2, 1.5)
+        )
+    ])
 
     #TRANSFORM###############################################################################################
 
-    med_train = MonkeyEyeballsDataset(args.scans, train_labels)
-    #med_train = MonkeyEyeballsDataset('/scratch/fda239/torch_arrays', train_labels,transform=transform)
+    med_train = MonkeyEyeballsDataset(args.scans, train_labels, transform=transform)
     med_val = MonkeyEyeballsDataset(args.scans, val_labels)
 
     dataloader_train = DataLoader(med_train, batch_size=args.batch, shuffle=True,pin_memory=True,num_workers=2 ) 
@@ -225,10 +227,17 @@ def main():
 
 
     model = resnet.resnet50(sample_input_D=128, sample_input_H=128, sample_input_W=512).cuda()
-    #OPTIMIZER = torch.optim.SGD(model.parameters(), lr=1e-9, momentum=0.9, weight_decay=1e-3)
+
     OPTIMIZER = torch.optim.Adamax(model.parameters(), lr=args.lr)
     SCHEDULER = lr_scheduler.ExponentialLR(OPTIMIZER, gamma=0.99)
     LOSS = nn.MSELoss(reduction='mean')
+
+    if args.warm_start_model is not None:
+        warm_start = torch.load(args.warm_start_model)
+        model.load_state_dict(warm_start['state_dict'])
+        OPTIMIZER.load_state_dict(warm_start['optimizer'])
+        args.save = os.path.dirname(args.warm_start_model)
+        
 
     # # load in in case of warm start
     # warm_start = torch.load('models/models/epoch_0_batch_100.pth.tar') 
@@ -246,7 +255,8 @@ def main():
           optimizer=OPTIMIZER, 
           scheduler=SCHEDULER, 
           total_epochs=args.epochs, 
-          warm_start_epoch=0,
+          warm_start_epoch=args.warm_start_epoch,
+          warm_start_batch=args.warm_start_batch,
           save_interval=159, 
           save_folder=args.save, # change this for a new run or change to pass it in as command line arg
           val_interval=10,

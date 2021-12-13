@@ -7,27 +7,27 @@ Estimate intracranial pressure (ICP) given OCT scans and intraocular pressure (I
 ## Repository Organization
 -----------
 
-├── LICENSE
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- Presentation information
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks for cleaning data and exploratory data analysis
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-├── src                <- Source code for use in this project.
-│   ├── __init__.py    <- Makes src a Python module
-│   ├── data           <- Scripts to download or generate data
-│   ├── models         <- Scripts to train models and then use trained models to make
-│
-└── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+    ├── LICENSE
+    ├── README.md          <- The top-level README for developers using this project.
+    ├── data
+    │   └── raw            <- The original, immutable data dump.
+    │
+    ├── docs               <- Presentation information
+    │
+    ├── models             <- Trained and serialized models, model predictions, or model summaries
+    │
+    ├── notebooks          <- Jupyter notebooks for cleaning data and exploratory data analysis
+    │
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+    │                         generated with `pip freeze > requirements.txt`
+    │
+    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
+    ├── src                <- Source code for use in this project.
+    │   ├── __init__.py    <- Makes src a Python module
+    │   ├── data           <- Scripts to download or generate data
+    │   ├── models         <- Scripts to train models and then use trained models to make
+    │
+    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
 ------------
 
